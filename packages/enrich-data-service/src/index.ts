@@ -1,9 +1,5 @@
 import { Worker } from "bullmq";
-import {
-	cacheDataQueue,
-	CACHE_QUEUE_NAME,
-	GEOLOCATION_QUEUE_NAME,
-} from "./queue";
+import { cacheDataQueue, GEOLOCATION_QUEUE_NAME } from "./queue";
 import { enrichData } from "./service";
 
 const worker = new Worker(GEOLOCATION_QUEUE_NAME, async (job) => {
@@ -12,7 +8,7 @@ const worker = new Worker(GEOLOCATION_QUEUE_NAME, async (job) => {
 		if (!enrichedData) {
 			throw new Error("data was not enriched");
 		}
-		return await cacheDataQueue.add(CACHE_QUEUE_NAME, enrichedData);
+		return await cacheDataQueue.add("mongo-cache", enrichedData);
 	} catch (err) {
 		console.error(err);
 	}

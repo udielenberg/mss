@@ -1,4 +1,3 @@
 import { Queue } from "bullmq";
 
-export const queueName = "geo-location";
-export const myQueue = new Queue(queueName);
+export const geoLocationQueue = new Queue("geo-location");

@@ -69,5 +69,7 @@ Get locations near a user by max distance
 
 **query params:**
 
-    - userId: number
-    - maxDistance: number
+```typescript
+userId: number;
+maxDistance: number;
+```

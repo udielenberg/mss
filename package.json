@@ -8,6 +8,7 @@
   ],
   "private": true,
   "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build",
     "develop": "lerna run develop",
     "start": "lerna run start"

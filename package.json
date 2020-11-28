@@ -7,5 +7,12 @@
     "packages/*"
   ],
   "private": true,
-  "scripts": {}
+  "scripts": {
+    "build": "lerna run build",
+    "develop": "lerna run develop",
+    "start": "lerna run start"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }

@@ -4,7 +4,7 @@ services:
   api:
     build: "./packages/api/"
     ports:
-      - "3679:3679"
+      - "3001:3001"
 
   mongo:
     image: mongo

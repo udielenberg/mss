@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import data from "./data";
+import data from "./seed/data";
 
 dotenv.config();
 

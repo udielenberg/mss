@@ -5,3 +5,5 @@ export const geoLocationQueue = new Queue("geo-location", {
 		host: "redis",
 	},
 });
+
+export const GEOLOCATION_JOB_NAME = "add-location";

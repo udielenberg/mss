@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { geoLocationQueue } from "./queue";
+import { geoLocationQueue, GEOLOCATION_JOB_NAME } from "./queue";
 
 export const addLocation = async (req: Request, res: Response) => {
 	const { body } = req;
 	const { geometry, userId, timestamp } = body;
 
 	if (geometry && userId && timestamp) {
-		await geoLocationQueue.add("add-location", body);
+		await geoLocationQueue.add(GEOLOCATION_JOB_NAME, body);
 		return res.send("ok");
 	}
 	return res.send("error");

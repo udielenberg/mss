@@ -14,7 +14,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-ENV MONGODB_URI=mongodb://root:example@localhost:27017
+ENV MONGODB_URI=mongodb://root:example@mongo:27017
 
-# EXPOSE 3001
+EXPOSE 3003
 CMD [ "node", "./dist/index.js" ]

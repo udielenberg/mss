@@ -1,8 +1,10 @@
 import axios from "axios";
-import { RawData } from "./types";
+import { RawData, EnrichedData } from "./types";
 import { createUrl } from "./utils";
 
-export const enrichData = async (rawData: RawData) => {
+export const enrichData = async (
+	rawData: RawData
+): Promise<EnrichedData | undefined> => {
 	const { coordinates } = rawData.geometry;
 
 	if (coordinates.length < 2) {

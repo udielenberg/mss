@@ -1,8 +1,7 @@
 # Instructions
 
 1. run `docker-compose up`
-2. run `yarn start`
-3. Microservices are all running!
+2. Microservices are all running!
 
 ---
 

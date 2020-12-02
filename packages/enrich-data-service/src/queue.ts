@@ -2,4 +2,6 @@ import { Queue } from "bullmq";
 
 export const GEOLOCATION_QUEUE_NAME = "geo-location";
 
-export const cacheDataQueue = new Queue("cache-data");
+export const cacheDataQueue = new Queue("cache-data", {
+	connection: { host: "redis" },
+});

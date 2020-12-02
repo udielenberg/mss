@@ -10,24 +10,30 @@ import {
 
 dotenv.config();
 
+const workerConnectionConfig = { connection: { host: "redis" } };
+
 let client: MongoClient | undefined;
 
-const worker = new Worker("cache-data", async (job) => {
-	try {
-		if (!client) {
-			client = new MongoClient(mongoUrl, mongoOptions);
-			await client.connect();
-			await initiateDB(client);
+const worker = new Worker(
+	"cache-data",
+	async (job) => {
+		try {
+			if (!client) {
+				client = new MongoClient(mongoUrl, mongoOptions);
+				await client.connect();
+				await initiateDB(client);
+			}
+
+			const db = client.db("userDB");
+			const collection = db.collection("locations");
+
+			await collection.insertOne(job.data);
+		} catch (err) {
+			console.log(err);
 		}
-
-		const db = client.db("userDB");
-		const collection = db.collection("locations");
-
-		await collection.insertOne(job.data);
-	} catch (err) {
-		console.log(err);
-	}
-});
+	},
+	workerConnectionConfig
+);
 
 async function initiateDB(client: MongoClient) {
 	await createLocationSeedData(client);

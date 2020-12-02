@@ -6,7 +6,11 @@ export const addLocation = async (req: Request, res: Response) => {
 	const { geometry, userId, timestamp } = body;
 
 	if (geometry && userId && timestamp) {
-		await geoLocationQueue.add(GEOLOCATION_JOB_NAME, body);
+		await geoLocationQueue.add(GEOLOCATION_JOB_NAME, {
+			geometry,
+			userId,
+			timestamp,
+		});
 		return res.send("ok");
 	}
 	return res.send("error");

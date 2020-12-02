@@ -2,9 +2,20 @@ version: "3.1"
 
 services:
   api:
-    build: "./packages/api/"
+    image: microservices-api
     ports:
       - "3001:3001"
+
+  cache-service:
+    image: microservices-cache-service
+    # port:
+    #   - ""
+
+  enrich-data-service:
+    image: microservices-enrich-data-service
+
+  web-service:
+    image: microservices-web-service
 
   mongo:
     image: mongo

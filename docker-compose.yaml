@@ -5,17 +5,28 @@ services:
     image: microservices-api
     ports:
       - "3001:3001"
+    depends_on:
+      - redis
 
   cache-service:
     image: microservices-cache-service
+    depends_on:
+      - mongo
+      - redis
     # port:
     #   - ""
 
   enrich-data-service:
     image: microservices-enrich-data-service
+    depends_on:
+      - redis
 
   web-service:
     image: microservices-web-service
+    depends_on:
+      - mongo
+    ports:
+      - "3003:3003"
 
   mongo:
     image: mongo

@@ -1,0 +1,25 @@
+{
+	"name": "@microservice/mongo-service",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/express": "^4.17.9",
+		"@types/mongodb": "^3.5.34",
+		"@types/mongoose": "^5.10.1",
+		"@types/node": "^14.14.8",
+		"nodemon": "^2.0.6"
+	},
+	"dependencies": {
+		"axios": "^0.21.0",
+		"bullmq": "^1.10.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"mongodb": "^3.6.3"
+	},
+	"scripts": {
+		"develop": "tsc --watch",
+		"build": "rm -rf ./dist && tsc",
+		"start": "nodemon ./dist/index.js"
+	}
+}

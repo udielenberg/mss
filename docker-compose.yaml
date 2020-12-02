@@ -8,8 +8,8 @@ services:
     depends_on:
       - redis
 
-  cache-service:
-    image: microservices-cache-service
+  mongo-service:
+    image: microservices-mongo-service
     depends_on:
       - mongo
       - redis
